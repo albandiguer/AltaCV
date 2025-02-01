@@ -1,0 +1,11 @@
+services:
+  tectonic:
+    image: fabianhauser/tectonic:latest
+    volumes:
+      - ./.cache/docker-tectonic:/home/tectonic/.cache
+      - .:/tectonic
+    working_dir: /tectonic
+    user: "${UID:-1000}:${GID:-1000}" # Use host user's UID/GID to avoid permission issues
+    # The entrypoint and command are left empty so you can override them when running
+    entrypoint: ["tectonic"]
+    command: ["--help"]
